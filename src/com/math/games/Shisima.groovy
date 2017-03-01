@@ -16,9 +16,21 @@ class Board {
 	List<Node> nodes;
 }
 
-class Player {
+class Player implements Runnable {
 	int playerId;
 	String playerName;
+		
+	public Player(int playerId, String playerName) {
+		super();
+		this.playerId = playerId;
+		this.playerName = playerName;
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		movePiece();
+	}
 }
 
 
@@ -26,6 +38,10 @@ class Shisima {
 
 	static main(args) {		
 		Board board = initializeBoard();
+		Player player1 = new Player(1, "Sonu");
+		new Thread(player1).start();
+		Player player2 = new Player(2, "Monu");
+		new Thread(player2).start();
 	}
 	
 	public Board initializeBoard() {
